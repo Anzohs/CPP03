@@ -6,7 +6,7 @@
 /*   By: hladeiro <hladeiro@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:09:51 by hladeiro          #+#    #+#             */
-/*   Updated: 2025/04/12 20:15:13 by hladeiro         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:32:17 by hladeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 typedef char* string;
 
 class ClapTrap{
-    private:
+    protected:
         int health;
         std::string name;
         int energyPoints;
