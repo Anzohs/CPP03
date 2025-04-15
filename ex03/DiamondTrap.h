@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.h                                         :+:      :+:    :+:   */
+/*   DiamondTrap.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hladeiro <hladeiro@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 20:18:30 by hladeiro          #+#    #+#             */
-/*   Updated: 2025/04/15 17:19:32 by hladeiro         ###   ########.fr       */
+/*   Created: 2025/04/15 18:04:33 by hladeiro          #+#    #+#             */
+/*   Updated: 2025/04/15 18:42:36 by hladeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.h"
+#include "FragTrap.h"
+#include "ScavTrap.h"
 
-class ScavTrap : private ClapTrap{
+
+class DiamondTrap : protected ScavTrap, protected FragTrap {
 	public:
-		ScavTrap(void);
-		ScavTrap(std::string n);
-		~ScavTrap(void);
-		ScavTrap(const ScavTrap& other);
-		ScavTrap operator=(const ScavTrap& other);
-		void guardGate();
-		void attack(const std::string& target);
-
+		DiamondTrap(void);
+		DiamondTrap(std::string n);
+		DiamondTrap operator=(const DiamondTrap& other);
+		DiamondTrap(const DiamondTrap& other);
+		~DiamondTrap();
+		void attack() const;
+		void whoAmI() const;
+	private:
+		std::string name;
+		int health;
+		int attackDamage;
+		int energyPoints;
 };

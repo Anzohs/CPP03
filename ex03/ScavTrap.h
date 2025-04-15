@@ -6,7 +6,7 @@
 /*   By: hladeiro <hladeiro@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:18:30 by hladeiro          #+#    #+#             */
-/*   Updated: 2025/04/15 17:19:32 by hladeiro         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:53:01 by hladeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ClapTrap.h"
 
-class ScavTrap : private ClapTrap{
+class ScavTrap : protected ClapTrap{
 	public:
 		ScavTrap(void);
 		ScavTrap(std::string n);
