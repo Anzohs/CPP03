@@ -18,20 +18,21 @@ typedef char* string;
 
 class ClapTrap{
     private:
-        int health;
+        ClapTrap(void);
         std::string name;
-        int energyPoints;
-        int attackDamage;
-				int  getHealth(void) const;
-				int  getEnergyPoints(void) const;
-				int  getAttackDamage(void) const;
-				std::string getName(void) const;
+        unsigned int hit_points; //health
+        unsigned int energy;
+        unsigned int attack_damage;
     public:
-        ClapTrap(std::string n);
+        ClapTrap(std::string name);
+        ~ClapTrap();
         ClapTrap(const ClapTrap& other);
-        ClapTrap& operator=(const ClapTrap& other);
-        ~ClapTrap(void);
-        void attack(const std::string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
+        ClapTrap    operator=(const ClapTrap& other);
+        void        attack(const std::string& target);
+        void        takeDamage(unsigned int amount);
+        void        beRepaired(unsigned int amount);
+        unsigned int	getHitPoints(void)const;
+        unsigned int	getEnergy(void)const;
+        unsigned int	getAttackDamage(void)const;
+        std::string getName(void)const;
 };

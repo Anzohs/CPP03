@@ -12,7 +12,7 @@
 
 #include "ClapTrap.h"
 
-int main(int ac, char *argv[])
+int main()
 {
 	ClapTrap c = ClapTrap("Mario");
 	
