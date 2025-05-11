@@ -14,9 +14,9 @@
 
 ScavTrap::ScavTrap(std::string n) : ClapTrap(n){
 	this->name = n;
-	this->energyPoints = 50;
-	this->attackDamage = 20;
-	this->health = 100;
+	this->energy = 50;
+	this->attack_damage = 20;
+	this->hit_points = 100;
 	std::cout << "ScavTrap was created\n";
 }
 
@@ -26,7 +26,7 @@ ScavTrap::~ScavTrap(){
 
 void ScavTrap::attack(const std::string& target){
 	std::cout << "ScavTrap " << this->name << " attacks " << target;
-	std::cout << ", causing an hopping " << this->attackDamage << " points of damage!\n";
+	std::cout << ", causing an hopping " << this->attack_damage << " points of damage!\n";
 }
 
 void ScavTrap::guardGate(void){

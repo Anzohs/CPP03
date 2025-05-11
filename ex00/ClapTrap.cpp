@@ -12,7 +12,10 @@
 
 #include "ClapTrap.h"
 
-ClapTrap::ClapTrap(void){};
+ClapTrap::ClapTrap(void){
+	this->name = "";
+	std::cout << "Default Constructor called\n";
+};
 
 ClapTrap::ClapTrap(std::string name) : hit_points(10), energy(10), attack_damage(0)
 {
@@ -20,6 +23,9 @@ ClapTrap::ClapTrap(std::string name) : hit_points(10), energy(10), attack_damage
 	std::cout << "Constructor called\n";
 }
 
+ClapTrap::~ClapTrap(void){
+	std::cout << "Destructor called\n";
+}
 
 ClapTrap ClapTrap::operator=(const ClapTrap& other)
 {
@@ -46,8 +52,8 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (this->hit_points <= 0 || this->energy <= 0)
 		return (std::cout << "ClapTrap " << this->getName() << " can't attack ", (void)target);
-	std::cout << "ClapTrap " << this->getName() << " attacks " << target.name();
-	std::cout << ", causing " << this->getAttackDamage() << " points of damage!"
+	std::cout << "ClapTrap " << this->getName() << " attacks " << target;
+	std::cout << ", causing " << this->getAttackDamage() << " points of damage!";
 	this->energy--;
 }
 
@@ -55,7 +61,10 @@ void	ClapTrap::takeDamage(unsigned int damage)
 {
 	if (this->hit_points <= 0)
 		return (std::cout << "ClapTrap " << this->getName() << " is already dead\n", (void)damage);
-	this->hit_points -= damage;
+	if (damage > this->hit_points)
+		this->hit_points = 0;
+	else
+		this->hit_points -= damage;
 	std::cout << "ClapTrap " << this->getName() << " took " << damage << " points of damage!";
 }
 

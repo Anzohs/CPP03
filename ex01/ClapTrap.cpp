@@ -12,51 +12,64 @@
 
 #include "ClapTrap.h"
 
-ClapTrap::ClapTrap(std::string n): health(10), energyPoints(10), attackDamage(0){
-	this->name = n;
+ClapTrap::ClapTrap(void){
+	this->name = "";
 	std::cout << "Default Constructor called\n";
+};
+
+ClapTrap::ClapTrap(std::string name) : hit_points(10), energy(10), attack_damage(0)
+{
+	this->name = name;
+	std::cout << "Constructor called\n";
 }
 
-ClapTrap::~ClapTrap(){
-	std::cout << "Destrutor called!!! \n";
+ClapTrap::~ClapTrap(void){
+	std::cout << "Destructor called\n";
 }
 
-ClapTrap::ClapTrap(const ClapTrap& other){}
-
-ClapTrap& ClapTrap::operator=(const ClapTrap& other){
+ClapTrap ClapTrap::operator=(const ClapTrap& other)
+{
 	if (this == &other)
-			return (*this);
+		return (*this);
 	this->name = other.getName();
-	this->attackDamage = other.getAttackDamage();
-	this->energyPoints = other.getEnergyPoints();
-	this->health = other.getHealth();
+	this->hit_points = other.getHitPoints();
+	this->energy = other.getEnergy();
+	this->attack_damage = other.getAttackDamage();
+	std::cout << "Operator = called\n";
 	return (*this);
 }
 
-void ClapTrap::attack(const std::string& target){
-	if (!this->health)
-		return;
-	if (this->energyPoints == 0)
-		return (std::cout << "Running low on energy points\n", (void)*this);
-	this->energyPoints--;
-	std::cout << "ClapTrap " << this->name << " attacks " << target;
-	std::cout << ", causing " << this->attackDamage << " points of damage!\n";
-}
-void ClapTrap::takeDamage(unsigned int amount){
-	if (this->health ==  0)
-		return (std::cout << "Already dead \n", (void)*this);
-	this->health - amount <= 0 ? this->health = 0 : this->health -= amount ;
-}
-void ClapTrap::beRepaired(unsigned int amount){
-	if (!this->health)
-		return;
-	if (this->energyPoints == 0)
-		return (std::cout << "Running low on energy points\n", (void)*this);
-	this->energyPoints--;
-	this->health += amount;
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+	this->name = other.getName();
+	this->hit_points = other.getHitPoints();
+	this->energy = other.getEnergy();
+	this->attack_damage = other.getAttackDamage();
+	std::cout << "Copy Constructor called\n";
 }
 
-int ClapTrap::getHealth(void) const {return (this->health);}
-int ClapTrap::getEnergyPoints(void)const {return (this->energyPoints);}
-int ClapTrap::getAttackDamage(void) const {return (this->attackDamage);}
-std::string ClapTrap::getName(void) const {return (this->name);}
+void	ClapTrap::attack(const std::string& target)
+{
+	if (this->hit_points <= 0 || this->energy <= 0)
+		return (std::cout << "ClapTrap " << this->getName() << " can't attack ", (void)target);
+	std::cout << "ClapTrap " << this->getName() << " attacks " << target;
+	std::cout << ", causing " << this->getAttackDamage() << " points of damage!";
+	this->energy--;
+}
+
+void	ClapTrap::takeDamage(unsigned int damage)
+{
+	if (this->hit_points <= 0)
+		return (std::cout << "ClapTrap " << this->getName() << " is already dead\n", (void)damage);
+	if (damage > this->hit_points)
+		this->hit_points = 0;
+	else
+		this->hit_points -= damage;
+	std::cout << "ClapTrap " << this->getName() << " took " << damage << " points of damage!";
+}
+
+
+std::string	ClapTrap::getName(void)const {return this->name;}
+unsigned int	ClapTrap::getHitPoints(void)const{return this->hit_points;}
+unsigned int	ClapTrap::getEnergy(void)const{return this->energy;}
+unsigned int	ClapTrap::getAttackDamage(void)const{return this->attack_damage;}
