@@ -15,37 +15,48 @@
 FragTrap::FragTrap(void) : ClapTrap(){
 	this->attackDamage = 30;
 	this->energyPoints = 100;
-	this->health = 100;
+	this->hitPoints = 100;
+	this->name = "";
 	std::cout << "FragTrap default construct called\n";
+}
+
+FragTrap::~FragTrap(void){
+	std::cout << "FragTrap was destroyed \n"; 
 }
 
 FragTrap::FragTrap(std::string n) : ClapTrap(n){
 	this->name = n;
 	this->attackDamage = 30;
 	this->energyPoints = 100;
-	this->health = 100;
+	this->hitPoints = 100;
 	std::cout << "FragTrap Class was created\n";
 }
 
-FragTrap FragTrap::operator=(const FragTrap& other){
+FragTrap& FragTrap::operator=(const FragTrap& other){
 	if (this == &other)
 		return (*this);
 	this->name = other.name;
 	this->attackDamage = other.attackDamage;
 	this->energyPoints = other.energyPoints;
-	this->health = other.health;
+	this->hitPoints = other.hitPoints;
+	std::cout << "FragTrap operator = called \n";
 	return (*this);
-	std::cout << "Copy operator called \n";
 }
 
-FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other.name){
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other.name)
+{
 	this->name = other.name;
 	this->attackDamage = other.attackDamage;
-	this->health = other.health;
+	this->hitPoints = other.hitPoints;
 	this->energyPoints = other.energyPoints;
-	std::cout << "Copy constructor called \n";
+	std::cout << "FragTrap Copy constructor called \n";
 }
 
 void FragTrap::highFiveGuys(void) const {
-	std::cout << "Can someone give me an highFive???\n";
+	if (!this->hitPoints)
+	{
+		std::cout << "Too bat it's d...  " << this->name << " would love to high five someone\n";
+		return ;
+	}
+	std::cout << "Can someone give me an highFive??? " << this->name << "\n";
 }

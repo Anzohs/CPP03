@@ -14,13 +14,12 @@
 
 #include "ClapTrap.h"
 
-class FragTrap: private ClapTrap{
+class FragTrap: public ClapTrap{
 	public:
 		FragTrap(void);
 		FragTrap(std::string n);
-		FragTrap operator=(const FragTrap& other);
+		FragTrap& operator=(const FragTrap& other);
 		FragTrap(const FragTrap& other);
 		~FragTrap(void);
 		void highFiveGuys(void) const;
-	private:
 };
