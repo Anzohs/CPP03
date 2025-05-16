@@ -16,13 +16,13 @@
 #include "ScavTrap.h"
 
 
-class DiamondTrap : protected ScavTrap, protected FragTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 	public:
 		DiamondTrap(void);
 		DiamondTrap(const std::string n);
-		DiamondTrap operator=(const DiamondTrap& other);
+		DiamondTrap& operator=(const DiamondTrap& other);
 		DiamondTrap(const DiamondTrap& other);
-		~DiamondTrap();
+		~DiamondTrap(void);
 		void whoAmI() const;
 	private:
 		std::string name;

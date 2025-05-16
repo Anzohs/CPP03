@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.h"
+#include "DiamondTrap.h"
 
 int main(int ac, string av[])
 {
@@ -20,11 +20,10 @@ int main(int ac, string av[])
 		std::cerr << "Example : ./program Name_for_ClapTrap, Name_for_clap trap to attack\n";
 		return (1);
 	}
-	FragTrap c = FragTrap(av[1]);
+	DiamondTrap c = DiamondTrap(av[1]);
+	c.whoAmI();
 	c.attack(av[2]);
 	c.highFiveGuys();
-	for (int i = 0; i < 100 ; i++)
-		c.takeDamage(1);
 	c.takeDamage(1);
 	c.beRepaired(0);
 	c.attack(av[2]);

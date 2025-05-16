@@ -50,11 +50,11 @@ void ScavTrap::guardGate(void){
 void ScavTrap::attack(const std::string& target){
 	if (!this->energyPoints || !this->hitPoints)
 	{
-		std::cout << "ScavTrap " << this->getName() << " can't attack!! \n";
+		std::cout << this->getName() << " can't attack!! \n";
 		std::cout << "Current energy points " << this->energyPoints << "\n";
 		std::cout << "Current health points " << this->hitPoints << "\n";
 		return;
 	}
-	std::cout << "ScavTrap " << this->name << " attacked " << target << " with attack power of " << this->attackDamage << "\n";
+	std::cout << this->name << " attacked " << target << " with attack power of " << this->attackDamage << "\n";
 	this->energyPoints--;
 }
