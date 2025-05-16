@@ -19,15 +19,11 @@
 class DiamondTrap : protected ScavTrap, protected FragTrap {
 	public:
 		DiamondTrap(void);
-		DiamondTrap(std::string n);
+		DiamondTrap(const std::string n);
 		DiamondTrap operator=(const DiamondTrap& other);
 		DiamondTrap(const DiamondTrap& other);
 		~DiamondTrap();
-		void attack() const;
 		void whoAmI() const;
 	private:
 		std::string name;
-		int health;
-		int attackDamage;
-		int energyPoints;
 };
